@@ -1,0 +1,14 @@
+[
+    {
+        "nom_complet":"Aminata Ba",
+        "login":"aminata.ba@ism.edu.sn",
+        "password":"bapoulo",
+         "role":"Admin"
+    },
+    {
+        "nom_complet":"Gilbert Diouf",
+        "login":"gilbert.diouf@ism.edu.sn",
+        "password":"sererepashumain",
+         "role":"User"
+    }
+]

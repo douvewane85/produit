@@ -1,5 +1,5 @@
 <?php 
-include_once 'fonction_produit.php';
+include_once 'fonctions.php';
 include_once './../data/data_fonction_produit.php';
 $arr_erreur=[];
 if(isset($_POST['btn_submit'])){
