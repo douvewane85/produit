@@ -1,0 +1,49 @@
+[
+    {
+        "libelle": "Lait",
+        "reference": "Prod001",
+        "prix": 1500,
+        "qte_stock": 150,
+        "description": "Le Lorem Ipsum est simplement du faux texte employ\u00e9 dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les ann\u00e9es 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour r\u00e9aliser un livre sp\u00e9cimen de polices de texte. Il n'a pas fait que survivre cinq si\u00e8cles, mais s'est aussi adapt\u00e9 \u00e0 la bureautique informatique, sans que son contenu n'en soit modifi\u00e9. Il a \u00e9t\u00e9 popularis\u00e9 dans les ann\u00e9es 1960 gr\u00e2ce \u00e0 la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus r\u00e9cemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
+        "disponible": "oui",
+        "categorie": [
+            "Alimentaire",
+            "Cosmetique"
+        ]
+    },
+    {
+        "libelle": "Lait de Corps",
+        "reference": "Prod002",
+        "prix": 1500,
+        "qte_stock": 150,
+        "description": "Le Lorem Ipsum est simplement du faux texte employ\u00e9 dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les ann\u00e9es 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour r\u00e9aliser un livre sp\u00e9cimen de polices de texte. Il n'a pas fait que survivre cinq si\u00e8cles, mais s'est aussi adapt\u00e9 \u00e0 la bureautique informatique, sans que son contenu n'en soit modifi\u00e9. Il a \u00e9t\u00e9 popularis\u00e9 dans les ann\u00e9es 1960 gr\u00e2ce \u00e0 la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus r\u00e9cemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
+        "disponible": "oui",
+        "categorie": [
+            "Cosmetique"
+        ]
+    },
+    {
+        "libelle": "Lait de Corps",
+        "reference": "Prod004",
+        "prix": 1500,
+        "qte_stock": 150,
+        "description": "Le Lorem Ipsum est simplement du faux texte employ\u00e9 dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les ann\u00e9es 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour r\u00e9aliser un livre sp\u00e9cimen de polices de texte. Il n'a pas fait que survivre cinq si\u00e8cles, mais s'est aussi adapt\u00e9 \u00e0 la bureautique informatique, sans que son contenu n'en soit modifi\u00e9. Il a \u00e9t\u00e9 popularis\u00e9 dans les ann\u00e9es 1960 gr\u00e2ce \u00e0 la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus r\u00e9cemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
+        "disponible": "oui",
+        "categorie": [
+            "Cosmetique"
+        ]
+    },
+    {
+        "reference": "Prod005",
+        "libelle": "Produit 5",
+        "prix": "25000",
+        "qte_stock": "50",
+        "montant": "",
+        "description": "Produit de Test",
+        "disponible": "oui",
+        "categorie": [
+            "Alimentaire",
+            "Cosmetique"
+        ]
+    }
+]
