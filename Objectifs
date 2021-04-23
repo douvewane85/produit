@@ -6,10 +6,14 @@ Connexion en Php  = $_SESSION
     -- Authentification  
     -- Gestion des Erreurs
 Demain 
-Menu de Navigation
 Inscription
+Menu de Navigation
 Deconnexion
--- Autorisation
+Autorisation
+Catalogue de Produit
+
 Details d'un Produit 
-Modification d'un Produit
+Modification d'un Produit 
+
+
 

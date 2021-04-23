@@ -1,5 +1,12 @@
 
-<?php 
+<?php
+    session_start();
+    //Page est accessible seulemement aux Admin connectés
+    //User n'est pas Connecté ou User est  connecté mais n'a pas le role Admin
+      if(!((isset($_SESSION['user'])) && $_SESSION['user']['role']=="Admin")){
+           header("location:catalogue.php");
+           exit();
+      }
     if(isset($_GET['erreur']) && isset($_GET['data_form'])){
       $arr_erreur=json_decode($_GET['erreur'],true);
       $arr_data=json_decode($_GET['data_form'],true);
@@ -16,7 +23,9 @@
     <title>Document</title>
 </head>
 <body>
-
+<!-- Menu  -->
+<?php include_once "menu.php"  ;  ?>
+<!-- Fin Menu  -->
 <div class="container mt-3">
 <form  action="./../traitement/traitement_produit.php"  method="post">
   <div class="form-group">

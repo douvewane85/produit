@@ -28,7 +28,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    
+    <!-- Menu  -->
+          <?php include_once "menu.php"  ;  ?>
+    <!-- Fin Menu  -->
   <div class="container mt-5">
          <h3 class="text-center text-info">Formulaire de Connexion</h3>
   <form method="post" action="./../traitement/traitement_connexion.php">

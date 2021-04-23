@@ -59,6 +59,7 @@ if(isset($_POST['btn_submit'])){
               }else{
                   //Utilisateur est bien Connecté
                     $_SESSION['user']=$user;
+                    
                  if( $user['role']=="Admin"){
                     header('location:./../views/liste_produit.php');
                  }elseif($user['role']=="User"){
@@ -76,7 +77,94 @@ if(isset($_POST['btn_submit'])){
        
     }
 
-    // Verifie si on a cliqué sur le button Inscription 
+    // Verifie si on a cliqué sur le button Inscription
+    if($_POST['btn_submit']=="register") {
+        //1-Validation des Données
+           $arr_erreur=[];
+           //Nom et le Prenom Obligatoire
+           if(is_vide($_POST['nom'])){
+              $arr_erreur['nom']="Nom est  obligatoire";
+           }
+           if(is_vide($_POST['prenom'])){
+              $arr_erreur['prenom']="Prenom est  obligatoire";
+           }
+           //Email Obligatoire et doit etre un email
+           if(is_vide($_POST['email'])){
+            $arr_erreur['email']="Email  obligatoire";
+            }else{
+            //Champ Rempli
+               //Enlever les espaces en debut et en fin de chaine
+                 $email=trim($_POST['email']);
+                //La valeur saisi est un email
+                if(filter_var($email, FILTER_VALIDATE_EMAIL)==false){
+                 $arr_erreur['email']="Veuillez saisir un Email";
+                }
+             }
+           //password et confirm_password obligatoire et identique
+           //Password
+           if(is_vide($_POST['password'])){
+                $arr_erreur['password']="password  obligatoire";
+            }else{
+               //Champ Rempli 
+               //Enlever les espaces en debut et en fin de chaine
+                 $password=trim($_POST['password']);
+                  //La valeur Saisi contient au moins 6 caracteres
+                 if(strlen($password)<6){
+                  $arr_erreur['password']="password  doit contenir au minimum 6 caracteres";
+                 }
+            }
+
+            //Confirm Password 
+            if(is_vide($_POST['confirm_password'])){
+                $arr_erreur['confirm_password']="La Confirmation du Password est  obligatoire";
+            }else{
+               //Champ Rempli 
+               //Enlever les espaces en debut et en fin de chaine
+                 $password=trim($_POST['confirm_password']);
+                  //La valeur Saisi contient au moins 6 caracteres
+                 if(strlen($password)<6){
+                  $arr_erreur['confirm_password']="La Confirmation du Password doit contenir au minimum 6 caracteres";
+                 }
+            }
+            
+            //Verifier si password et confirm Password sont identiques
+              if(!isset($arr_erreur['password']) && !isset($arr_erreur['confirm_password'])){
+                  //Pas d'erreur dans le Password,ni dans confirm password
+                  $password=trim($_POST['password']);
+                  $confirm_password=trim($_POST['confirm_password']);
+                  if($password!=$confirm_password){
+                       $arr_erreur['confirm_password']="Les mots de passe ne sont pas identiques";
+                  }
+              }
+
+
+           //role est Obligatoire
+           if(is_vide($_POST['role'])){
+               $arr_erreur['role']="Le Role est  obligatoire";
+            }
+            
+              if(count( $arr_erreur)!=0){
+                  //Erreur de Formulaire
+                  $_SESSION['erreur']=$arr_erreur;
+                  //Passe dans la session les Donnees du Formulaire
+                  $_SESSION['dataForm']=$_POST;
+                  header('location:./../views/register.php');
+                  exit();
+              }
+               //2-Traitement d'incription
+                //Enregistrer le User dans le Fichier Json
+                 //Formatage des Données
+                    unset($_POST["btn_submit"]);
+                    unset($_POST["confirm_password"]);
+                    $_POST['nom_complet']=$_POST['prenom']." ".$_POST['nom'];
+                    unset($_POST["nom"]);
+                    unset($_POST["prenom"]);
+
+                  inscription($_POST);
+                  //Redirection vers Catalogue
+                  header('location:./../views/catalogue.php');
+                  exit();
+    }
 
 }
 else{

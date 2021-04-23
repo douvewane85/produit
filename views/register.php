@@ -5,14 +5,13 @@
       $arr_erreur=$_SESSION['erreur'];
       //Detruit les donnees d'erreur de la session
       unset($_SESSION['erreur']);
-    }else{
-         //Pas Erreur de Formulaire 
-         //Erreur de Connexion
-         if(isset($_SESSION['erreur_login'])){
-           $erreur_login=$_SESSION['erreur_login'];
-           unset($_SESSION['erreur_login']);
-         }
     }
+     //Recuperation des Données du Formulaire
+      if(isset($_SESSION['dataForm'])){
+         $dataForm=$_SESSION['dataForm'];
+         unset($_SESSION['dataForm']);
+      }
+    
 ?>
 
 
@@ -28,64 +27,81 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    
+    <!-- Menu  -->
+               <?php include_once "menu.php"  ;  ?>
+    <!-- Fin Menu  -->
   <div class="container mt-3">
          <h3 class="text-center text-info">Formulaire d'inscription</h3>
   <form method="post" action="./../traitement/traitement_connexion.php">
-  <!--  Affichage du Message d'erreur de Connexion  -->
-       <?php if(isset($erreur_login)):?>
-          <div class="alert alert-danger" role="alert">
-            <strong><?=$erreur_login ?></strong>
-          </div>
-    <?php endif ?>
-  <!--  Fin Affichage du Message d'erreur de Connexion  -->
-
   <div class="form-group">
     <label for="exampleInputEmail1">Nom</label>
-    <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <?php if(isset($arr_erreur['email'])):?>
-        <small id="emailHelp" class="form-text text-danger"><?php echo $arr_erreur['email'];  ?></small>
+    <input type="text" name="nom" class="form-control" 
+       id="exampleInputEmail1" aria-describedby="emailHelp"
+       placeholder="Enter le Nom"
+       value="<?php if(!isset($arr_erreur['nom']) && isset($dataForm['nom'])) echo $dataForm['nom'];  ?>"
+    >
+    <?php if(isset($arr_erreur['nom'])):?>
+        <small id="emailHelp" class="form-text text-danger"><?php echo $arr_erreur['nom'];  ?></small>
     <?php endif ?>
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Prenom</label>
-    <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <?php if(isset($arr_erreur['email'])):?>
-        <small id="emailHelp" class="form-text text-danger"><?php echo $arr_erreur['email'];  ?></small>
+    <input type="text" name="prenom" class="form-control" 
+       id="exampleInputEmail1" aria-describedby="emailHelp"
+       placeholder="Enter le Prenom"
+       value="<?php if(!isset($arr_erreur['prenom']) && isset($dataForm['prenom'])) echo $dataForm['prenom']; ?>"
+     />
+
+    <?php if(isset($arr_erreur['prenom'])):?>
+        <small id="emailHelp" class="form-text text-danger"><?php echo $arr_erreur['prenom'];  ?></small>
     <?php endif ?>
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="text" name="email" class="form-control" 
+      id="exampleInputEmail1" aria-describedby="emailHelp"
+      placeholder="Enter email"
+      value="<?php if(!isset($arr_erreur['email']) && isset($dataForm['email'])) echo $dataForm['email']; ?>"
+      />
     <?php if(isset($arr_erreur['email'])):?>
         <small id="emailHelp" class="form-text text-danger"><?php echo $arr_erreur['email'];  ?></small>
     <?php endif ?>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" name="password"   class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" name="password"   class="form-control" 
+      id="exampleInputPassword1" placeholder="Entrer un Mot de Passe"
+      value="<?php if(!isset($arr_erreur['password']) && isset($dataForm['password'])) echo $dataForm['password'];?>"
+    />
+      
       <?php if(isset($arr_erreur['password'])):?>
-          <small id="emailHelp" class="form-text text-danger"><?php echo $arr_erreur['password'];  ?></small>
+          <small id="emailHelp" class="form-text text-danger"><?php echo $arr_erreur['password']; ?></small>
       <?php endif ?>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Confirm Password</label>
-    <input type="password" name="password"   class="form-control" id="exampleInputPassword1" placeholder="Password">
-      <?php if(isset($arr_erreur['password'])):?>
-          <small id="emailHelp" class="form-text text-danger"><?php echo $arr_erreur['password'];  ?></small>
+    <input type="password" name="confirm_password"   class="form-control" 
+      id="exampleInputPassword1" 
+      placeholder="Entrer la confirmation du Mot de Passe"
+      value="<?php if(!isset($arr_erreur['confirm_password']) && isset($dataForm['confirm_password'])) echo $dataForm['confirm_password']; ?>"
+      >
+      <?php if(isset($arr_erreur['confirm_password'])):?>
+          <small id="emailHelp" class="form-text text-danger"><?php echo $arr_erreur['confirm_password'];  ?></small>
       <?php endif ?>
   </div>
   <div class="form-group">
        <label for="">Role</label>
         <select class="form-control" name="role" id="">
-          <option></option>
-          <option>Admin</option>
-          <option>User</option>
+          <option value=""></option>
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
         </select>
-        <small id="emailHelp" class="form-text text-danger">champ Obligatoire</small>
+        <?php if(isset($arr_erreur['role'])):?>
+          <small id="emailHelp" class="form-text text-danger"><?php echo $arr_erreur['role'];  ?></small>
+       <?php endif ?>
   </div>
    
-    <button type="submit" class="btn btn-primary float-right" name="btn_submit"  value="login">Connection</button>
+    <button type="submit" class="btn btn-primary float-right" name="btn_submit"  value="register">Inscription</button>
    </form>
    </div>
     <!-- Optional JavaScript -->
